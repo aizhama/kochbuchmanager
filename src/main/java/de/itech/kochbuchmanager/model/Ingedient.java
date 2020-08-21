@@ -7,21 +7,20 @@ import org.springframework.stereotype.Component;
 //@Data
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Component
 @Entity
 @Getter
 @Setter
-@Table(name = "ingredient", schema = "postgres")
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = "ingredient_name"), name = "ingredients")
 public class Ingedient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-
-    @Column(unique = true, name = "ingredient_name")
     private String ingredient_name;
 
     @ManyToMany
@@ -30,6 +29,6 @@ public class Ingedient {
             joinColumns = @JoinColumn(name = "ingredient_id"),
             inverseJoinColumns = @JoinColumn(name = "trait_id")
     )
-    private Set<Trait> traits;
+    private List<Trait> traits;
 
 }

@@ -8,8 +8,8 @@ import javax.persistence.*;
 
 @Component
 @Entity
-@Table(name = "recipe_ingredient", schema = "postgres")
-public class Recipe_Ingredient {
+@Table(name = "recipe_ingredient")
+public class RecipeIngredient {
 
     @Id
     @Getter
